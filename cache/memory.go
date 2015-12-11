@@ -233,6 +233,12 @@ func (bc *MemoryCache) item_expired(name string) bool {
 	return false
 }
 
+func (bc *MemoryCache) GetItems() map[string]*MemoryItem {
+	bc.lock.RLock()
+	defer bc.lock.RUnlock()
+	return bc.items
+}
+
 func init() {
 	Register("memory", NewMemoryCache())
 }
