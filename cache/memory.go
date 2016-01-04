@@ -44,7 +44,7 @@ type MemoryCache struct {
 }
 
 // NewMemoryCache returns a new MemoryCache.
-func NewMemoryCache() *MemoryCache {
+func NewMemoryCache() Cache {
 	cache := MemoryCache{items: make(map[string]*MemoryItem)}
 	return &cache
 }
@@ -240,5 +240,5 @@ func (bc *MemoryCache) GetItems() map[string]*MemoryItem {
 }
 
 func init() {
-	Register("memory", NewMemoryCache())
+	Register("memory", NewMemoryCache)
 }
